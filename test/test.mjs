@@ -10,4 +10,22 @@ const searchPattern =
     defaultSearchPattern,
   ));
 
-runDependencyFinder(searchPattern);
+const defaultTargetPaths = "./components/**/*.tsx|./pages/**/*.tsx";
+const targetPaths = `${
+  args[1] ||
+  (await answerStringQuestion(
+    "Which folders should we check for imports (pipe-separated)?",
+    defaultTargetPaths,
+  ))
+}`.split("|");
+
+const defaultIgnorePatterns = ".test|.stories";
+const ignorePatterns = `${
+  args[2] ||
+  (await answerStringQuestion(
+    "Which filename patterns should be ignored (pipe-separated)?",
+    defaultIgnorePatterns,
+  ))
+}`.split("|");
+
+runDependencyFinder(searchPattern, targetPaths, ignorePatterns);
