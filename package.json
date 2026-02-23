@@ -1,0 +1,29 @@
+{
+  "name": "@gld5000-cli/dependency-finder",
+  "version": "1.0.0",
+  "description": "Finds how many dependents your components have.",
+  "keywords": [
+    "CLI",
+    "NODE",
+    "Search",
+    "Local",
+    "Repo",
+    "Deprecation",
+    "Dependents"
+  ],
+  "homepage": "https://github.com/GLD5000/dependency-finder#readme",
+  "bugs": {
+    "url": "https://github.com/GLD5000/dependency-finder/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GLD5000/dependency-finder.git"
+  },
+  "license": "MIT",
+  "author": "GLD5000",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  }
+}
