@@ -6,9 +6,11 @@ import {
 } from "./filterDependents.mjs";
 import { findDependentsInTargetPaths } from "./findDependents.mjs";
 
-export function runDependencyFinder() {
+export function runDependencyFinder(searchPattern) {
   // Get files with TSX exports
-  const allDependents = findDependentsInTargetPaths(findComponents());
+  const allDependents = findDependentsInTargetPaths(
+    findComponents(searchPattern),
+  );
   const noDependents = filterNoDependents(allDependents);
   const someDependents = filterSomeDependents(allDependents);
   const returnObject = {

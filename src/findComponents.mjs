@@ -7,7 +7,7 @@ import { searchFiles } from "./searchFiles.mjs";
  * @param {string} inputPath
  * @returns {[path: string, matches: string[]]}
  */
-export function findComponents(inputPath = "./components/**/*.tsx") {
+export function findComponents(inputPath) {
   return searchFiles(
     filterFilesNot(findFiles(inputPath), [".test", ".stories"]),
     /(export) (const|default) ([a-zA-Z]+)/g,
