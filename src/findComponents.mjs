@@ -7,10 +7,10 @@ import { searchFiles } from "./searchFiles.mjs";
  * @param {string} inputPath
  * @returns {[path: string, matches: string[]]}
  */
-export function findComponents(inputPath) {
+export function findComponents(inputPath, ignorePatterns) {
   return searchFiles(
-    filterFilesNot(findFiles(inputPath), [".test", ".stories"]),
-    /(export) (const|default) ([a-zA-Z]+)/g,
-    3,
+    filterFilesNot(findFiles(inputPath), ignorePatterns),
+    /(export default function|export const|export default) ([a-zA-Z]+)/g,
+    2,
   );
 }

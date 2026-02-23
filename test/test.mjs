@@ -27,5 +27,13 @@ const ignorePatterns = `${
     defaultIgnorePatterns,
   ))
 }`.split("|");
-
+// node test/test.mjs test/test-components/**/*.tsx test/test-components/**/*.tsx
+console.log(
+  "searchPattern:",
+  searchPattern,
+  "targetPaths:",
+  targetPaths,
+  "ignorePatterns:",
+  ignorePatterns,
+);
 runDependencyFinder(searchPattern, targetPaths, ignorePatterns);

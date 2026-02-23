@@ -19,7 +19,7 @@ export function runDependencyFinder(
 ) {
   // Get files with TSX exports
   const allDependents = findDependentsInTargetPaths(
-    findComponents(searchPattern),
+    findComponents(searchPattern, ignorePatterns),
     targetPaths,
     ignorePatterns,
   );
