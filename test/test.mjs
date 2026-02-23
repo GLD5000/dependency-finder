@@ -27,7 +27,7 @@ const ignorePatterns = `${
     defaultIgnorePatterns,
   ))
 }`.split("|");
-// node test/test.mjs test/test-components/**/*.tsx test/test-components/**/*.tsx
+// node test/test.mjs "test/test-components/**/*.tsx" "test/test-components/**/*.tsx" ".test|.stories"
 console.log(
   "searchPattern:",
   searchPattern,
