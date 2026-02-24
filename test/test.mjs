@@ -42,5 +42,7 @@ console.log(
   targetPaths,
   "ignorePatterns:",
   ignorePatterns,
+  "isPascalCase:",
+  isPascalCase,
 );
 runDependencyFinder(searchPattern, targetPaths, ignorePatterns, isPascalCase);

@@ -20,10 +20,9 @@ export function runDependencyFinder(
 ) {
   // Get files with TSX exports
   const allDependents = findDependentsInTargetPaths(
-    findComponents(searchPattern, ignorePatterns),
+    findComponents(searchPattern, ignorePatterns, isPascalCase),
     targetPaths,
     ignorePatterns,
-    isPascalCase,
   );
   const noDependents = filterNoDependents(allDependents);
   const someDependents = filterSomeDependents(allDependents);
