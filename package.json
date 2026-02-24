@@ -22,6 +22,7 @@
   "license": "MIT",
   "author": "GLD5000",
   "type": "commonjs",
+  "bin": "bin/index.mjs",
   "main": "src/index.mjs",
   "scripts": {
     "test": "node test/test.mjs"
