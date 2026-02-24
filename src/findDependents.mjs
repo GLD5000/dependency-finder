@@ -59,7 +59,10 @@ export function findDependentsInTargetPaths(
       .flatMap((searchTerm) =>
         searchFileContent(
           content,
-          new RegExp(`import [^'"]*${searchTerm}[^a-zA-Z]([^'"]+["']){2}`, "g"),
+          new RegExp(
+            `import [^'"]*[^a-zA-Z]${searchTerm}[^a-zA-Z]([^'"]+["']){2}`,
+            "g",
+          ),
         ),
       )
       .filter((currentArray) => currentArray.length > 0);
