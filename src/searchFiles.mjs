@@ -13,7 +13,7 @@ export function searchFiles(filePathArray, searchPattern, captureGroup) {
 
   function searchReducer(acc, curr) {
     const matches = searchFile(curr, searchPattern, captureGroup);
-    acc.push({ filePath: curr, matches });
+    matches && matches.length > 0 && acc.push({ filePath: curr, matches });
     return acc;
   }
 }
