@@ -1,6 +1,6 @@
 {
   "name": "@gld5000-cli/dependency-finder",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Finds how many dependents your components have.",
   "keywords": [
     "CLI",
