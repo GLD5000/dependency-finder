@@ -37,4 +37,10 @@ const isPascalCase =
       defaultExportCase,
     ))) === "y";
 
-runDependencyFinder(searchPattern, targetPaths, ignorePatterns, isPascalCase);
+runDependencyFinder(
+  searchPattern,
+  targetPaths,
+  ignorePatterns,
+  isPascalCase,
+  args[4],
+);

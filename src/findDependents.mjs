@@ -7,6 +7,7 @@ export function findDependentsInTargetPaths(
   componentObjectArray,
   targetPaths,
   ignorePatterns,
+  importPathSubstring,
 ) {
   return targetPaths.reduce(targetPathReducer, componentObjectArray);
   /**
@@ -65,7 +66,16 @@ export function findDependentsInTargetPaths(
           ),
         ),
       )
-      .filter((currentArray) => currentArray.length > 0);
+      .filter((currentString) => {
+        // console.log("importPathSubstring", importPathSubstring);
+        // console.log("currentsSring", currentString);
+        return (
+          (currentString.length > 0 && !importPathSubstring) ||
+          (importPathSubstring &&
+            currentString.length > 0 &&
+            currentString.indexOf(importPathSubstring) !== -1)
+        );
+      });
     if (dependentsCandidates && dependentsCandidates.length > 0) {
       acc.dependentsArray.push({
         filePath: currentFilePath,

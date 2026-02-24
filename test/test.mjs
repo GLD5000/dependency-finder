@@ -34,7 +34,7 @@ const isPascalCase =
       "PascalCase exports only?",
       defaultExportCase,
     ))) === "y";
-// node test/test.mjs "test/test-components/**/*.tsx" "test/test-components/**/*.tsx" ".test|.stories"
+// node test/test.mjs "test/test-components/**/*.tsx" "test/test-components/**/*.tsx" ".test|.stories" "y" "funcky"
 console.log(
   "searchPattern:",
   searchPattern,
@@ -45,4 +45,10 @@ console.log(
   "isPascalCase:",
   isPascalCase,
 );
-runDependencyFinder(searchPattern, targetPaths, ignorePatterns, isPascalCase);
+runDependencyFinder(
+  searchPattern,
+  targetPaths,
+  ignorePatterns,
+  isPascalCase,
+  args[4],
+);
