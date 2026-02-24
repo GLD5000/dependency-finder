@@ -45,7 +45,7 @@ npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [Fil
 | **Component directory**  | Glob pattern for component files to analyze                  | `./components/**/*.tsx`                   | `./src/components/**/*.tsx`     |
 | **Dependents paths**     | Pipe-separated glob patterns for where to search for imports | `./components/**/*.tsx\|./pages/**/*.tsx` | `./src/**/*.tsx\|./app/**/*.ts` |
 | **File ignore patterns** | Pipe-separated patterns to exclude from analysis             | `.test\|.stories`                         | `.test\|.spec\|.mock`           |
-| **PascalCase only**      | Filter exports to PascalCase names only (React components)   | `n`                                       | `y` or `n`                      |
+| **PascalCase only**      | Filter exports to PascalCase names only (React components)   | `y`                                       | `y` or `n`                      |
 
 ### Example Usage
 

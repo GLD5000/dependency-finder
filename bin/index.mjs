@@ -29,7 +29,7 @@ const ignorePatterns = `${
     defaultIgnorePatterns,
   ))
 }`.split("|");
-
+const defaultExportCase = "y";
 const isPascalCase =
   (args[3] ||
     (await answerStringQuestion(
