@@ -60,7 +60,7 @@ export function findDependentsInTargetPaths(
         searchFileContent(
           content,
           new RegExp(
-            `import [^'"]*[^a-zA-Z]${searchTerm}[^a-zA-Z]([^'"]+["']){2}`,
+            `import[^'"a-zA-Z]*${searchTerm}[^a-zA-Z]([^'"]+["']){2}`,
             "g",
           ),
         ),
