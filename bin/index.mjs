@@ -29,4 +29,12 @@ const ignorePatterns = `${
     defaultIgnorePatterns,
   ))
 }`.split("|");
-runDependencyFinder(searchPattern, targetPaths, ignorePatterns);
+
+const isPascalCase =
+  (args[3] ||
+    (await answerStringQuestion(
+      "PascalCase exports only?",
+      defaultExportCase,
+    ))) === "y";
+
+runDependencyFinder(searchPattern, targetPaths, ignorePatterns, isPascalCase);

@@ -27,6 +27,13 @@ const ignorePatterns = `${
     defaultIgnorePatterns,
   ))
 }`.split("|");
+const defaultExportCase = "y";
+const isPascalCase =
+  (args[3] ||
+    (await answerStringQuestion(
+      "PascalCase exports only?",
+      defaultExportCase,
+    ))) === "y";
 // node test/test.mjs "test/test-components/**/*.tsx" "test/test-components/**/*.tsx" ".test|.stories"
 console.log(
   "searchPattern:",
@@ -36,4 +43,4 @@ console.log(
   "ignorePatterns:",
   ignorePatterns,
 );
-runDependencyFinder(searchPattern, targetPaths, ignorePatterns);
+runDependencyFinder(searchPattern, targetPaths, ignorePatterns, isPascalCase);

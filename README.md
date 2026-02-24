@@ -35,7 +35,7 @@ npx @gld5000-cli/dependency-finder
 ## Run with arguments
 
 ```
-npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [File ignore patterns]
+npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [File ignore patterns] [PascalCase only]
 ```
 
 ### Arguments
@@ -45,6 +45,7 @@ npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [Fil
 | **Component directory**  | Glob pattern for component files to analyze                  | `./components/**/*.tsx`                   | `./src/components/**/*.tsx`     |
 | **Dependents paths**     | Pipe-separated glob patterns for where to search for imports | `./components/**/*.tsx\|./pages/**/*.tsx` | `./src/**/*.tsx\|./app/**/*.ts` |
 | **File ignore patterns** | Pipe-separated patterns to exclude from analysis             | `.test\|.stories`                         | `.test\|.spec\|.mock`           |
+| **PascalCase only**      | Filter exports to PascalCase names only (React components)   | `n`                                       | `y` or `n`                      |
 
 ### Example Usage
 
@@ -57,6 +58,12 @@ npx @gld5000-cli/dependency-finder "./src/components/**/*.ts" "./src/**/*.ts" ".
 
 # Analyze React components including JSX
 npx @gld5000-cli/dependency-finder "./components/**/*.{tsx,jsx}" "./src/**/*.{tsx,jsx}|./pages/**/*.{tsx,jsx}" ".test|.stories|.mock"
+
+# Analyze TSX components with PascalCase filtering (for strict React component naming)
+npx @gld5000-cli/dependency-finder "./components/**/*.tsx" "./components/**/*.tsx|./pages/**/*.tsx" ".test|.stories" "y"
+
+# Analyze JSX components with PascalCase filtering enabled
+npx @gld5000-cli/dependency-finder "./src/components/**/*.jsx" "./src/**/*.jsx" ".test|.stories" "y"
 ```
 
 ## Output
@@ -117,11 +124,12 @@ The tool generates a `dependents-report.json` file in your project root with the
 
 1. **Discover Components** - Scans your codebase using the component directory pattern to find all component files
 2. **Extract Exports** - Identifies exported components in each file
-3. **Search for Imports** - Searches target paths for import statements referencing each component
-4. **Categorize Results** - Groups components into those with dependents and those without
-5. **Generate Report** - Creates a detailed JSON report with all findings
+3. **Filter Exports** - Optionally filters exports to include only PascalCase names (enforces React component naming conventions)
+4. **Search for Imports** - Searches target paths for import statements referencing each component
+5. **Categorize Results** - Groups components into those with dependents and those without
+6. **Generate Report** - Creates a detailed JSON report with all findings
 
-The tool uses glob patterns for flexible file matching and supports filtering to exclude test files, stories, and other non-production code.
+The tool uses glob patterns for flexible file matching and supports filtering to exclude test files, stories, and other non-production code. For TSX/JSX components, enable PascalCase filtering to strictly enforce React naming conventions and ignore helper functions and utilities.
 
 ## Examples
 
