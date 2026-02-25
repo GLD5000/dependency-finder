@@ -151,7 +151,7 @@ After running, check `dependents-report.json` and review the `noDependents` sect
 ### Audit Before Deprecating a Component Library
 
 ```bash
-npx @gld5000-cli/dependency-finder "./components/**/*.tsx" "./pages/**/*.tsx|./features/**/*.tsx|./layouts/**/*.tsx" ".test"
+npx @gld5000-cli/dependency-finder "./node_modules/my_package/build/components/**/index.d.ts" "./components/**/*.tsx|./pages/**/*.tsx" ".test|.stories" "y" "my_package"
 ```
 
 Review the `someDependents` section to see exactly where each component is used before deprecating or refactoring.
@@ -161,6 +161,40 @@ Review the `someDependents` section to see exactly where each component is used 
 ```bash
 # Run with defaults for standard React project structure
 npx @gld5000-cli/dependency-finder
+```
+
+### Run in CI pipeline for repo files
+
+```yaml
+dependency_report:
+  stage: test
+  image: node:latest
+  script:
+    # Run the command; file is created automatically by the package: npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [File ignore patterns] [PascalCase only] [Import path includes]
+    - npx @gld5000-cli/dependency-finder "./components/**/*.tsx" "./components/**/*.tsx|./pages/**/*.tsx" ".test|.stories" "y"
+  artifacts:
+    paths:
+      - dependents-report.json
+    when: always # Optional: uploads the report even if the job fails
+    expire_in: 1 week # Optional: defines how long to keep the file
+```
+
+### Run in CI pipeline for project dependencies
+
+```yaml
+my_package_dependency_report:
+  stage: test
+  image: node:latest
+  script:
+    # Install node_modules
+    - npm install
+    # Run the command; file is created automatically by the package: npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [File ignore patterns] [PascalCase only] [Import path includes]
+    - npx @gld5000-cli/dependency-finder "./node_modules/my_package/build/components/**/index.d.ts" "./components/**/*.tsx|./pages/**/*.tsx" ".test|.stories" "y" "my_package"
+  artifacts:
+    paths:
+      - dependents-report.json
+    when: always # Optional: uploads the report even if the job fails
+    expire_in: 1 week # Optional: defines how long to keep the file
 ```
 
 Follow the prompts to customize paths for your project structure.
