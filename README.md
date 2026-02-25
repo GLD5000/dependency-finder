@@ -83,7 +83,7 @@ The tool generates a `dependents-report.json` file in your project root with the
     "count": 2,
     "results": [
       {
-        "matches": [],
+        "matches": ["UnusedComponent"],
         "filePath": "components/Button/index.tsx",
         "dependents": []
       },
