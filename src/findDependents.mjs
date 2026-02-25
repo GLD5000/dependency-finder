@@ -7,7 +7,7 @@ export function findDependentsInTargetPaths(
   componentObjectArray,
   targetPaths,
   ignorePatterns,
-  importPathSubstring,
+  importPathIncludes,
 ) {
   return targetPaths.reduce(targetPathReducer, componentObjectArray);
   /**
@@ -67,13 +67,13 @@ export function findDependentsInTargetPaths(
         ),
       )
       .filter((currentString) => {
-        // console.log("importPathSubstring", importPathSubstring);
+        // console.log("importPathIncludes", importPathIncludes);
         // console.log("currentsSring", currentString);
         return (
-          (currentString.length > 0 && !importPathSubstring) ||
-          (importPathSubstring &&
+          (currentString.length > 0 && !importPathIncludes) ||
+          (importPathIncludes &&
             currentString.length > 0 &&
-            currentString.indexOf(importPathSubstring) !== -1)
+            currentString.indexOf(importPathIncludes) !== -1)
         );
       });
     if (dependentsCandidates && dependentsCandidates.length > 0) {

@@ -35,7 +35,7 @@ npx @gld5000-cli/dependency-finder
 ## Run with arguments
 
 ```
-npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [File ignore patterns] [PascalCase only] [Import path filter]
+npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [File ignore patterns] [PascalCase only] [Import path includes]
 ```
 
 ### Arguments
@@ -46,7 +46,7 @@ npx @gld5000-cli/dependency-finder [Component directory] [Dependents paths] [Fil
 | **Dependents paths**     | Pipe-separated glob patterns for where to search for imports | `./components/**/*.tsx\|./pages/**/*.tsx` | `./src/**/*.tsx\|./app/**/*.ts` |
 | **File ignore patterns** | Pipe-separated patterns to exclude from analysis             | `.test\|.stories`                         | `.test\|.spec\|.mock`           |
 | **PascalCase only**      | Filter exports to PascalCase names only (React components)   | `y`                                       | `y` or `n`                      |
-| **Import path filter**   | Filter imports to only those containing this substring       | (none)                                    | `folder-a` or `@components`     |
+| **Import path includes** | Filter imports to only those containing this substring       | (none)                                    | `folder-a` or `@components`     |
 
 ### Example Usage
 

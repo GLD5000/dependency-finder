@@ -17,14 +17,14 @@ export function runDependencyFinder(
   targetPaths,
   ignorePatterns,
   isPascalCase,
-  importPathSubstring,
+  importPathIncludes,
 ) {
   // Get files with TSX exports
   const allDependents = findDependentsInTargetPaths(
     findComponents(searchPattern, ignorePatterns, isPascalCase),
     targetPaths,
     ignorePatterns,
-    importPathSubstring,
+    importPathIncludes,
   );
   const noDependents = filterNoDependents(allDependents);
   const someDependents = filterSomeDependents(allDependents);
